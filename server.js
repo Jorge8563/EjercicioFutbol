@@ -21,9 +21,9 @@
     res.json({ message: "UMG Web Application" });
   });
 
-  require("./app/routes/cliente.routes")(app);
-  require("./app/routes/proovedor.routes")(app);
-require("./app/routes/producto.routes")(app);
+  require("./app/routes/jugador.routes")(app);
+   require("./app/routes/equipo.routes")(app);
+;
 
   const PORT = process.env.PORT || 8081;
   app.listen(PORT, () => {

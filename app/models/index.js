@@ -33,12 +33,18 @@ const db = {};
 db.Sequelize = Sequelize;
 
 db.sequelize = sequelize;
-db.clientes = require("./cliente.model.js")(sequelize, Sequelize);
-// Importamos el modelo de proveedor (con su propio nombre)
-db.proovedor = require("./proovedor.model.js")(sequelize, Sequelize);
-db.producto = require("./producto.model.js")(sequelize, Sequelize);
-// Aquí puedes seguir importando otros modelos de forma similar
-// Ejemplo: db.productos = require("./producto.model.js")(sequelize, Sequelize);
 
-// Exportamos el objeto `db` para que pueda ser usado por otros módulos (por ejemplo, en el `server.js`)
+// Importamos el modelo de proveedor (con su propio nombre)
+db.jugador = require("./jugador.model.js")(sequelize, Sequelize);
+db.equipo = require("./equipo.model.js")(sequelize, Sequelize);
+
+db.jugador.hasMany(db.equipo, {
+    foreignKey: "id_jugador"
+});
+
+db.equipo.belongsTo(db.jugador, {
+    foreignKey: "id_jugador"
+});
+;
+
 module.exports = db;
